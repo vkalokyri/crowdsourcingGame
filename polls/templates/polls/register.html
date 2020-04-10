@@ -1,0 +1,32 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/familyfeud.css' %}">
+
+<div class="gameBoard" style="height:50%">
+        
+        
+        <div>
+                
+                        <div class="questionHolder" style="font-size:19px; height:50%; line-height: 50px; margin-top:5%">
+
+                                {% if user_form.username.errors %}
+                                        <p style="color:indianred; margin-bottom:-40px">{{ user_form.username.errors.as_text }}</p>
+                                {% else %}
+                                         <p style="margin-bottom:-40px; color: #deeeff;"> User already exists</p>
+                                {% endif %}
+
+                                <form  method="post">
+                                        {% csrf_token %}
+                                        Username: {{user_form.username}}
+                                        <br>
+                                        Password: {{user_form.password}}
+                                        <br>
+                                        <input style="color: white; border: 3px solid white; margin-left:90px; float: inherit; font-size:18px; width:30%; font-family: helvetica, sans-serif; text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);" class="button" type="submit" name="register" value="Register">
+                                </form>
+                          </div>
+
+                
+       
+                        
+</div>
+

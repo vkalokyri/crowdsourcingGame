@@ -1,0 +1,39 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/familyfeud.css' %}">
+
+<div class="gameBoard">
+        <div class="score" id="boardScore">:-)</div>
+        <div style="text-align: center; display: inline-block; margin:0 auto; height:auto" class="questionHolder">
+                {% if messages %}
+
+                {% for message in messages %}
+                        <p style="color:indianred; margin-top:2px; margin-bottom:-10px; font-size: 16px ">{{ message }}</p>{% endfor %}
+                {% else %}
+                        <span class="question">Thanks for playing with us!</span>
+                {% endif %}
+
+                <div class="colHolder" style="background:#deeeff; overflow: scroll; height:400px">
+                        <div class="col1">
+                                {% for user,total in leaderboard.items %}
+                                        <div class="cardHolder" style="perspective: 800px;" >
+                                                <div class="card" style="transform-style: preserve-3d;">
+                                                        <div class="back DBG" style="-webkit-backface-visibility: visible; ">
+                                                                <span style="color:white; width:25px">{{ forloop.counter }}.</span>
+                                                                <span style="color:white; ">{{ user }}</span>
+                                                                <b class="LBG">{{ total }}</b>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                {% endfor %}
+                        </div>
+                </div>
+                <div style="text-align: center; display: inline-block; margin:0 auto">
+                        <a href="/polls" >Start a new game</a> 
+                </div>
+        </div>     
+        
+</div>
+
+
+

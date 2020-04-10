@@ -1,0 +1,51 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/familyfeud.css' %}">
+
+<div class="gameBoard">
+        
+        
+        <div>
+                
+                        <div class="questionHolder" style="font-size:19px; height:250px; line-height: 45px; margin-top:5%">
+
+                                {% if messages %}
+
+                                        {% for message in messages %}
+                                        <p style="color:indianred; margin-top:2px; margin-bottom:-10px; font-size: 16px ">{{ message }}</p>{% endfor %}
+                                {% else %}
+                                         <p style="margin-top:2px; margin-bottom:-10px; color: #deeeff; font-size: 16px"> User not logged in</p>
+                                {% endif %}
+
+                                <form  method="post" action="{% url 'polls:login_view' %}">
+                                        {% csrf_token %}
+                                        Username: <input style="height:35px; width:30%; font-size:20px;" size="40px" type="text" name="username"/>
+                                        <br>
+                                        Password: <input style="height:35px; width:30%; font-size:20px;" size="40px" type="password" name="password"/>
+                                        <br>
+                                        <input style="color: white; border: 3px solid white; margin-left:90px; float: inherit; font-size:18px; width:30%; font-family: helvetica, sans-serif; text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);" class="button" type="submit" name="login" value="Login">
+                                        <div style="border-bottom: 2px;background: black; height: 1px; margin-top:20px; width: 30%; text-align: center; left:35%; position: absolute;">      
+                                        <span style="background: #deeeff; margin-top:-10px; color:#666"> New to our game?</span>
+                                </form>
+
+                                <form method="post" action="{% url 'polls:register' %}">
+                                        {% csrf_token %}
+                                        {{ form.as_p }}
+                                        <input style="margin-top: 5px; background-color:gray; color: white; border: 3px solid #fff; width:100%; float: inherit; font-size:18px; font-family: helvetica, sans-serif; text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);" type="submit" name="newAccount" value="Create a new account">
+                                </form>
+                          </div>
+
+                
+        </div>
+
+        
+
+        
+        
+
+       
+                        
+</div>
+
+
+
